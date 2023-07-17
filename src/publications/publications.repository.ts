@@ -18,4 +18,8 @@ export class PublicationsRepository {
   async findByTitle(title: string) {
     return await this.prisma.publication.findFirst({ where: { title } });
   }
+
+  async getPublication(userId: number) {
+    return await this.prisma.publication.findMany({ where: { userId } });
+  }
 }

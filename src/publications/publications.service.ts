@@ -19,4 +19,8 @@ export class PublicationsService {
       throw new ConflictException('This title is already in use!');
     return await this.publicationsRepository.createPublication(data, userId);
   }
+
+  async getPublication(userId: number) {
+    return await this.publicationsRepository.getPublication(userId);
+  }
 }
