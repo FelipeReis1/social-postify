@@ -17,6 +17,22 @@ model User {
   password    String
   avatar      String
   createdAt   DateTime      @default(now())
-  
+  Publication Publication[]
+
   @@map("users")
+}
+
+model Publication{
+  id            Int        @id @default(autoincrement())
+  userId        Int
+  image         String
+  title         String
+  text          String
+  dateToPublish DateTime
+  published     Boolean    @default(false)
+  socialMedia   String
+  createdAt     DateTime    @default(now())
+  user          User        @relation(fields: [userId], references: [id])
+  
+  @@map("publications")
 }
